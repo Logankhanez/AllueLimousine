@@ -430,17 +430,39 @@ export default function CitySearch() {
               )}
             </div>
 
-            {/* Option Aller-retour */}
-            <div className="flex items-center space-x-2 mt-4 p-3 bg-[#8e7d3f]/10 rounded-md border border-[#8e7d3f]/20">
-              <input
-                type="checkbox"
-                id="round-trip"
-                checked={isRoundTrip}
-                onChange={(e) => setIsRoundTrip(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-[#8e7d3f] focus:ring-[#8e7d3f]"
-              />
-              <label htmlFor="round-trip" className="text-sm font-medium text-gray-200">
-                Aller-retour
+            {/* Option Aller-retour avec indicateur visuel amélioré */}
+            <div className="flex items-center mt-4 p-3 bg-[#8e7d3f]/10 rounded-md border border-[#8e7d3f]/20">
+              <label className="flex items-center cursor-pointer w-full">
+                <div className="relative flex items-center">
+                  <input
+                    type="checkbox"
+                    id="round-trip"
+                    checked={isRoundTrip}
+                    onChange={(e) => setIsRoundTrip(e.target.checked)}
+                    className="opacity-0 absolute h-6 w-6 cursor-pointer"
+                  />
+                  <div
+                    className={`h-6 w-6 flex items-center justify-center rounded border-2 ${
+                      isRoundTrip ? "bg-[#8e7d3f] border-[#8e7d3f]" : "bg-gray-700 border-[#8e7d3f]/50"
+                    } transition-colors duration-200`}
+                  >
+                    {isRoundTrip && (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-white"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={3}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                </div>
+                <span className={`ml-3 text-sm font-medium ${isRoundTrip ? "text-white" : "text-gray-200"}`}>
+                  Aller-retour
+                </span>
               </label>
             </div>
           </div>

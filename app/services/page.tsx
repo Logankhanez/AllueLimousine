@@ -18,7 +18,7 @@ export default function ServicesPage() {
           <h1 className="font-['Georgia'] text-5xl md:text-7xl text-white mb-6">Nos services</h1>
           <div className="w-24 h-[2px] bg-[#8e7d3f] mx-auto mb-6"></div>
           <p className="text-white/90 max-w-2xl mx-auto text-lg">
-            POUR VOTRE SATISFACTION, NOS SERVICES SONT PERSONNALISABLES A VOTRE CONVENANC
+            POUR VOTRE SATISFACTION, NOS SERVICES SONT PERSONNALISABLES A VOTRE CONVENANCe
           </p>
           <p className="text-white/80 max-w-2xl mx-auto text-base mt-4">
             Les prestations de transport Allure Limousine sont élaborées pour que nos clients se sentent totalement
