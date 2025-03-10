@@ -57,17 +57,17 @@ const knownLocations: Record<string, [number, number]> = {
   chamonix: [6.87, 45.923],
   "chamonix-mont-blanc": [6.87, 45.923],
   grenoble: [5.724, 45.188],
-  annemasse: [6.234, 46.193],
+  "annemasse-city": [6.234, 46.193],
   "thonon-les-bains": [6.48, 46.371],
   evian: [6.585, 46.4],
   "evian-les-bains": [6.585, 46.4],
   chambéry: [5.917, 45.564],
   "aix-les-bains": [5.908, 45.692],
-  "saint-gervais-les-bains": [6.712, 45.892],
+  "saint-gervais-les-bains-city": [6.712, 45.892],
   megève: [6.617, 45.857],
   morzine: [6.709, 46.179],
   avoriaz: [6.774, 46.187],
-  cluses: [6.585, 46.059],
+  "cluses-city": [6.585, 46.059],
   sallanches: [6.636, 45.934],
   albertville: [6.392, 45.675],
   "bourg-en-bresse": [5.228, 46.205],
@@ -76,7 +76,7 @@ const knownLocations: Record<string, [number, number]> = {
   "ferney-voltaire": [6.108, 46.258],
   "divonne-les-bains": [6.143, 46.358],
   valserhône: [5.8253, 46.1128],
-  "bellegarde-sur-valserine": [5.8253, 46.1128], // Ancien nom de Valserhône
+  "bellegarde-sur-valserine-old": [5.8253, 46.1128], // Ancien nom de Valserhône
   bellegarde: [5.8253, 46.1128], // Nom court souvent utilisé
   "châtillon-en-michaille": [5.8253, 46.1128], // Commune déléguée de Valserhône
   lancrans: [5.8253, 46.1128], // Commune déléguée de Valserhône
@@ -99,7 +99,7 @@ const knownLocations: Record<string, [number, number]> = {
   "la roche-sur-foron": [6.3167, 46.0667],
   cluses: [6.585, 46.059],
   "saint-gervais-les-bains": [6.712, 45.892],
-  sallanches: [6.636, 45.934],
+  "sallanches-city": [6.636, 45.934],
 
   // Gares principales
   "gare de genève-cornavin": [6.1419, 46.2101],
