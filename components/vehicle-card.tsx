@@ -65,7 +65,7 @@ export default function VehicleCard({ vehicle, reservationInfo, index = 0 }: Veh
             </div>
 
             {/* Caractéristiques principales */}
-            <div className="mb-4 flex items-center gap-4">
+            <div className="mb-4 flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-1">
                 <Users className="h-4 w-4" />
                 <span className="text-sm">{vehicle.seats}</span>
@@ -112,14 +112,14 @@ export default function VehicleCard({ vehicle, reservationInfo, index = 0 }: Veh
             <div className="bg-black/40 p-3 rounded-md border border-[#8e7d3f]/20">
               {totalPrice ? (
                 <div>
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex flex-wrap items-baseline gap-2">
                     <span className="text-2xl font-bold text-[#8e7d3f]">{totalPrice.toFixed(2)}</span>
                     <div className="text-sm text-zinc-400">
                       <span>CHF total</span>
                       {reservationInfo?.roundTrip && <span className="ml-1">(aller-retour)</span>}
                     </div>
                   </div>
-                  <div className="text-sm text-zinc-400">
+                  <div className="text-sm text-zinc-400 mt-1">
                     {reservationInfo?.withDriver ? (
                       <span>
                         {(vehicle.pricePerKm + (vehicle.withDriverSupplement || 0)).toFixed(2)} CHF/km avec chauffeur
@@ -130,7 +130,7 @@ export default function VehicleCard({ vehicle, reservationInfo, index = 0 }: Veh
                   </div>
                 </div>
               ) : (
-                <div className="flex items-baseline gap-2">
+                <div className="flex flex-wrap items-baseline gap-2">
                   <span className="text-2xl font-bold text-[#8e7d3f]">{vehicle.pricePerKm.toFixed(2)}</span>
                   <div className="text-sm text-zinc-400">
                     <span>CHF /km</span>

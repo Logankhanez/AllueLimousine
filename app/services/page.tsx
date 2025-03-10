@@ -1,5 +1,3 @@
-import Logo from "@/components/logo"
-
 export default function ServicesPage() {
   return (
     <main>
@@ -18,25 +16,7 @@ export default function ServicesPage() {
         {/* Contenu */}
         <div className="relative z-10 text-center px-4 py-20 mt-16">
           <h1 className="font-['Georgia'] text-5xl md:text-7xl text-white mb-6">Nos services</h1>
-          <div className="flex items-center justify-center gap-4 mb-8">
-            <div className="w-24 h-[2px] bg-gradient-to-r from-transparent to-[#8e7d3f]"></div>
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-[3px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-20 h-[4px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-12 h-[3px] bg-[#8e7d3f]"></div>
-            </div>
-            <div className="relative mx-2">
-              <div className="w-8 h-8 border-3 border-[#8e7d3f] rotate-45"></div>
-              <div className="absolute inset-0 w-8 h-8 border-3 border-[#8e7d3f] rotate-45 scale-75 opacity-70"></div>
-              <div className="absolute inset-0 w-8 h-8 border-2 border-[#8e7d3f]/50 rotate-45 scale-90 opacity-50"></div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-[3px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-20 h-[4px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-12 h-[3px] bg-[#8e7d3f]"></div>
-            </div>
-            <div className="w-24 h-[2px] bg-gradient-to-l from-transparent to-[#8e7d3f]"></div>
-          </div>
+          <div className="w-24 h-[2px] bg-[#8e7d3f] mx-auto mb-6"></div>
           <p className="text-white/90 max-w-2xl mx-auto text-lg">
             POUR VOTRE SATISFACTION, NOS SERVICES SONT PERSONNALISABLES A VOTRE CONVENANCE
           </p>
@@ -154,7 +134,8 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
             {/* Logo et drapeau */}
             <div className="text-center md:text-left">
-              <Logo className="h-32 w-auto mb-8" />
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-2">Allure</h2>
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-8">Limousine</h2>
               <div className="flex justify-center md:justify-start">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Civil_Ensign_of_Switzerland.svg%20(1)-bPbKC8IbHZNpXYzoIV0F4QaOM6fX9P.png"
@@ -167,21 +148,21 @@ export default function ServicesPage() {
             {/* Informations de contact */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">LOCATION & HEURES</h3>
-                <p className="text-sm mb-2 font-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
-                <p className="text-sm font-light">Tous les jours également le Week-End 24h/24h</p>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">LOCATION & HEURES</h3>
+                <p className="text-sm mb-2 font-avenir-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
+                <p className="text-sm font-avenir-light">Tous les jours également le Week-End 24h/24h</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">CONTACTER NOUS</h3>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">CONTACTER NOUS</h3>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <span>✉</span>
-                    <span className="text-sm font-light">Email</span>
+                    <span className="text-sm font-avenir-light">Email</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>📞</span>
-                    <span className="text-sm font-light">+41 XXXXXXXXX</span>
+                    <span className="text-sm font-avenir-light">+41 XXXXXXXXX</span>
                   </div>
                 </div>
               </div>
@@ -190,7 +171,7 @@ export default function ServicesPage() {
 
           {/* Copyright */}
           <div className="text-center text-sm">
-            <p className="font-light">© 2035</p>
+            <p className="font-avenir-light">© 2035</p>
           </div>
         </div>
       </footer>

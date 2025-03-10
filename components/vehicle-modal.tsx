@@ -185,7 +185,7 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
               <h3 className="mb-4 text-lg font-semibold">Options de paiement</h3>
               <div className="space-y-4">
                 {/* Option: Meilleur prix */}
-                <div className="flex items-center justify-between rounded-lg border border-[#8e7d3f]/20 p-4 bg-black/40">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between rounded-lg border border-[#8e7d3f]/20 p-4 bg-black/40">
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       <input
@@ -204,11 +204,11 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
                       Payez maintenant, annulez et modifiez moyennant des frais
                     </p>
                   </div>
-                  <span className="text-sm font-medium">Inclus</span>
+                  <span className="text-sm font-medium mt-2 sm:mt-0">Inclus</span>
                 </div>
 
                 {/* Option: Restez flexible */}
-                <div className="flex items-center justify-between rounded-lg border border-[#8e7d3f]/20 p-4 bg-black/40">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between rounded-lg border border-[#8e7d3f]/20 p-4 bg-black/40">
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
                       <input
@@ -231,7 +231,7 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
                       charge
                     </p>
                   </div>
-                  <span className="text-sm font-medium">+ 10%</span>
+                  <span className="text-sm font-medium mt-2 sm:mt-0">+ 10%</span>
                 </div>
               </div>
             </div>
@@ -299,7 +299,7 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
             )}
 
             {/* Caractéristiques du véhicule */}
-            <div className="mb-6 grid grid-cols-4 gap-4">
+            <div className="mb-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
               <div className="flex items-center gap-2">
                 <Users className="h-5 w-5 text-gray-300" />
                 <span className="text-sm">{vehicle.seats} Sièges</span>
@@ -392,7 +392,7 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
 
             {/* Formulaire de contact */}
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="firstName" className="text-sm font-medium">
                     Prénom
@@ -478,16 +478,20 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
                 />
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-gray-700">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-gray-700">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setStep("details")}
-                  className="border-gray-600 text-white hover:bg-gray-700"
+                  className="border-gray-600 text-white hover:bg-gray-700 w-full sm:w-auto"
                 >
                   Retour
                 </Button>
-                <Button type="submit" className="bg-[#8e7d3f] text-white hover:bg-[#8e7d3f]/90" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  className="bg-[#8e7d3f] text-white hover:bg-[#8e7d3f]/90 w-full sm:w-auto"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />

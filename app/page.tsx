@@ -4,14 +4,23 @@ import CitySearch from "@/app/components/City-search"
 import TextReveal from "@/components/motion/text-reveal"
 import { motion } from "framer-motion"
 import Logo from "@/components/logo"
+import { useMobile } from "@/hooks/use-mobile"
 
 export default function Page() {
+  const { isMobile } = useMobile()
   return (
     <main>
       {/* Première section vidéo */}
       <section className="relative h-[100vh]">
         <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#8e7d3f]" />
-        <video autoPlay loop muted playsInline className="h-full w-full object-cover">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="h-full w-full object-cover"
+          poster="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Vid%C3%A9o%20sans%20titre%20%E2%80%90%20R%C3%A9alis%C3%A9e%20avec%20Clipchamp%20(4)-qYAoTHIGldcA8PwF0Wo2Pp8pbDXJrB.mp4"
+        >
           <source
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Vid%C3%A9o%20sans%20titre%20%E2%80%90%20R%C3%A9alis%C3%A9e%20avec%20Clipchamp%20(4)-qYAoTHIGldcA8PwF0Wo2Pp8pbDXJrB.mp4"
             type="video/mp4"
@@ -19,17 +28,20 @@ export default function Page() {
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          <TextReveal text="Allure" className="font-['Times_New_Roman'] text-[#8e7d3f] text-7xl md:text-9xl" />
+          <TextReveal
+            text="Allure"
+            className={`font-['Times_New_Roman'] text-[#8e7d3f] ${isMobile ? "text-5xl" : "text-7xl md:text-9xl"}`}
+          />
           <TextReveal
             text="Limousine"
-            className="font-['Times_New_Roman'] text-[#8e7d3f] text-7xl md:text-9xl"
+            className={`font-['Times_New_Roman'] text-[#8e7d3f] ${isMobile ? "text-5xl" : "text-7xl md:text-9xl"}`}
             delay={0.5}
           />
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="font-['Times_New_Roman'] text-[#8e7d3f] text-3xl md:text-5xl mt-4"
+            className={`font-['Times_New_Roman'] text-[#8e7d3f] ${isMobile ? "text-xl" : "text-3xl md:text-5xl"} mt-4`}
           >
             Votre confort, notre mission
           </motion.p>
@@ -97,7 +109,7 @@ export default function Page() {
               Nos Engagements en Matière de Service
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
               <div className="space-y-4">
                 <h3 className="font-['Georgia'] text-[#8e7d3f] text-2xl italic">Discret</h3>
                 <p className="text-white text-sm leading-relaxed">
@@ -141,7 +153,7 @@ export default function Page() {
           </p>
           <div className="text-[#8e7d3f] text-2xl mb-8">×</div>
 
-          <form className="max-w-md mx-auto">
+          <form className="max-w-md mx-auto w-full px-4 sm:px-0">
             <input
               type="email"
               placeholder="Enter your email here *"
@@ -165,7 +177,7 @@ export default function Page() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
             {/* Logo et drapeau */}
             <div className="text-center md:text-left">
-              <Logo className="h-32 w-auto mb-8" />
+              <Logo className="h-24 w-auto mb-8" />
               <div className="flex justify-center md:justify-start">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Civil_Ensign_of_Switzerland.svg%20(1)-bPbKC8IbHZNpXYzoIV0F4QaOM6fX9P.png"
@@ -178,21 +190,21 @@ export default function Page() {
             {/* Informations de contact */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">LOCATION & HEURES</h3>
-                <p className="text-sm mb-2 font-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
-                <p className="text-sm font-light">Tous les jours également le Week-End 24h/24h</p>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">LOCATION & HEURES</h3>
+                <p className="text-sm mb-2 font-avenir-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
+                <p className="text-sm font-avenir-light">Tous les jours également le Week-End 24h/24h</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">CONTACTER NOUS</h3>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">CONTACTER NOUS</h3>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <span>✉</span>
-                    <span className="text-sm font-light">Email</span>
+                    <span className="text-sm font-avenir-light">Email</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>📞</span>
-                    <span className="text-sm font-light">+41 XXXXXXXXX</span>
+                    <span className="text-sm font-avenir-light">+41 XXXXXXXXX</span>
                   </div>
                 </div>
               </div>
@@ -201,7 +213,7 @@ export default function Page() {
 
           {/* Copyright */}
           <div className="text-center text-sm">
-            <p className="font-light">© 2035</p>
+            <p className="font-avenir-light">© 2035</p>
           </div>
         </div>
       </footer>

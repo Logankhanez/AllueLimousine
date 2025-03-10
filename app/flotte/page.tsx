@@ -6,9 +6,10 @@ import VehicleCard from "@/components/vehicle-card"
 import Link from "next/link"
 import AnimateOnScroll from "@/components/motion/animate-on-scroll"
 import { motion } from "framer-motion"
-import Logo from "@/components/logo"
+import { useMobile } from "@/hooks/use-mobile"
 
 export default function FlottePage() {
+  const { isMobile } = useMobile()
   return (
     <main className="min-h-screen bg-black">
       {/* Section titre améliorée avec hauteur ajustée */}
@@ -24,44 +25,26 @@ export default function FlottePage() {
         </div>
 
         {/* Contenu */}
-        <div className="relative z-10 text-center px-4 py-20 mt-16">
+        <div className="relative z-10 text-center px-4 py-12 sm:py-20 mt-16">
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-['Georgia'] text-5xl md:text-7xl text-white mb-6"
+            className={`font-['Georgia'] ${isMobile ? "text-4xl" : "text-5xl md:text-7xl"} text-white mb-6`}
           >
             Notre Flotte
           </motion.h1>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ width: 0 }}
+            animate={{ width: "6rem" }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="flex items-center justify-center gap-4 mb-8"
-          >
-            <div className="w-24 h-[2px] bg-gradient-to-r from-transparent to-[#8e7d3f]"></div>
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-[3px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-20 h-[4px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-12 h-[3px] bg-[#8e7d3f]"></div>
-            </div>
-            <div className="relative mx-2">
-              <div className="w-8 h-8 border-3 border-[#8e7d3f] rotate-45"></div>
-              <div className="absolute inset-0 w-8 h-8 border-3 border-[#8e7d3f] rotate-45 scale-75 opacity-70"></div>
-              <div className="absolute inset-0 w-8 h-8 border-2 border-[#8e7d3f]/50 rotate-45 scale-90 opacity-50"></div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-12 h-[3px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-20 h-[4px] bg-[#8e7d3f] mb-2"></div>
-              <div className="w-12 h-[3px] bg-[#8e7d3f]"></div>
-            </div>
-            <div className="w-24 h-[2px] bg-gradient-to-l from-transparent to-[#8e7d3f]"></div>
-          </motion.div>
+            className="h-[2px] bg-[#8e7d3f] mx-auto mb-6"
+          />
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-white/90 max-w-2xl mx-auto text-lg"
+            className="text-white/90 max-w-2xl mx-auto text-base sm:text-lg"
           >
             Découvrez notre sélection de véhicules haut de gamme, disponibles avec ou sans chauffeur pour tous vos
             déplacements
@@ -142,17 +125,17 @@ export default function FlottePage() {
           <AnimateOnScroll
             animation="slideUp"
             delay={0.3}
-            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
               href="/flotte/avec-chauffeur"
-              className="w-full sm:w-auto px-8 py-3 bg-[#8e7d3f] hover:bg-[#8e7d3f]/90 text-white rounded-md text-center transition-colors"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-[#8e7d3f] hover:bg-[#8e7d3f]/90 text-white rounded-md text-center transition-colors"
             >
               Réserver avec chauffeur
             </Link>
             <Link
               href="/flotte/sans-chauffeur"
-              className="w-full sm:w-auto px-8 py-3 bg-black hover:bg-black/90 text-white border border-[#8e7d3f] rounded-md text-center transition-colors"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 bg-black hover:bg-black/90 text-white border border-[#8e7d3f] rounded-md text-center transition-colors"
             >
               Réserver sans chauffeur
             </Link>
@@ -166,7 +149,8 @@ export default function FlottePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
             {/* Logo et drapeau */}
             <AnimateOnScroll animation="slideRight" className="text-center md:text-left">
-              <Logo className="h-32 w-auto mb-8" />
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-2">Allure</h2>
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-8">Limousine</h2>
               <div className="flex justify-center md:justify-start">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Civil_Ensign_of_Switzerland.svg%20(1)-bPbKC8IbHZNpXYzoIV0F4QaOM6fX9P.png"
@@ -179,21 +163,21 @@ export default function FlottePage() {
             {/* Informations de contact */}
             <AnimateOnScroll animation="slideLeft" className="space-y-8">
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">LOCATION & HEURES</h3>
-                <p className="text-sm mb-2 font-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
-                <p className="text-sm font-light">Tous les jours également le Week-End 24h/24h</p>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">LOCATION & HEURES</h3>
+                <p className="text-sm mb-2 font-avenir-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
+                <p className="text-sm font-avenir-light">Tous les jours également le Week-End 24h/24h</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">CONTACTER NOUS</h3>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">CONTACTER NOUS</h3>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <span>✉</span>
-                    <span className="text-sm font-light">Email</span>
+                    <span className="text-sm font-avenir-light">Email</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>📞</span>
-                    <span className="text-sm font-light">+41 XXXXXXXXX</span>
+                    <span className="text-sm font-avenir-light">+41 XXXXXXXXX</span>
                   </div>
                 </div>
               </div>
@@ -202,7 +186,7 @@ export default function FlottePage() {
 
           {/* Copyright */}
           <AnimateOnScroll animation="fadeIn" delay={0.5} className="text-center text-sm">
-            <p className="font-light">© 2035</p>
+            <p className="font-avenir-light">© 2035</p>
           </AnimateOnScroll>
         </div>
       </footer>

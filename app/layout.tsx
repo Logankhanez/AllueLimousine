@@ -1,11 +1,16 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display } from "next/font/google"
+import { Playfair_Display, Nunito_Sans } from "next/font/google"
 import "./globals.css"
 import NavBar from "@/components/nav-bar"
 import ScrollToTop from "@/components/scroll-to-top"
 import PageTransition from "@/components/motion/page-transition"
-import WhatsAppChat from "@/components/whatsapp-chat"
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-nunito-sans",
+})
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
@@ -21,7 +26,10 @@ export const metadata: Metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 5,
+  minimumScale: 1,
+  userScalable: true,
+  viewportFit: "cover",
 }
 
 export default function RootLayout({
@@ -31,13 +39,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={`overflow-x-hidden ${playfairDisplay.className}`}>
+      <body className={`overflow-x-hidden ${playfairDisplay.className} ${nunitoSans.variable}`}>
         <ScrollToTop />
         <NavBar />
         <div className="pt-[70px]">
           <PageTransition>{children}</PageTransition>
         </div>
-        <WhatsAppChat adminWhatsAppNumber="41791234567" adminName="Allure Limousine" />
       </body>
     </html>
   )

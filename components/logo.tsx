@@ -4,7 +4,7 @@ interface LogoProps {
   className?: string
 }
 
-export default function Logo({ className = "h-auto w-auto" }: LogoProps) {
+export default function Logo({ className = "" }: LogoProps) {
   return (
     <div className={`relative flex items-center justify-center ${className}`}>
       <img

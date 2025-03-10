@@ -1,6 +1,5 @@
-import { calculateDistance as calculateDistanceClient } from "./distance-client"
-
 // Améliorons la fonction calculateDistance pour ajouter plus de logging et de robustesse
+
 export async function calculateDistance(origin: string, destination: string): Promise<number | null> {
   try {
     console.log(`Calcul de la distance routière entre "${origin}" et "${destination}"...`)
@@ -38,8 +37,26 @@ export async function calculateDistance(origin: string, destination: string): Pr
       console.log(`Destination normalisée: "${processedDestination}"`)
     }
 
-    // Utiliser notre implémentation client-side
-    return await calculateDistanceClient(processedOrigin, processedDestination)
+    // Appeler notre API route pour calculer la distance routière
+    console.log(`Appel de l'API avec origine="${processedOrigin}" et destination="${processedDestination}"`)
+    const response = await fetch(
+      `/api/distance?origin=${encodeURIComponent(processedOrigin)}&destination=${encodeURIComponent(processedDestination)}`,
+      { cache: "no-store" },
+    )
+
+    if (!response.ok) {
+      throw new Error(`Erreur API: ${response.status}`)
+    }
+
+    const data = await response.json()
+
+    if (data.error) {
+      console.warn("Avertissement API:", data.error)
+    }
+
+    console.log(`Distance routière calculée: ${data.distance} km (méthode: ${data.method})`)
+
+    return data.distance
   } catch (error) {
     console.error("Erreur lors du calcul de la distance routière:", error)
     // En cas d'erreur, retourner une valeur par défaut

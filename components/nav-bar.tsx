@@ -5,13 +5,14 @@ import { usePathname } from "next/navigation"
 import { ChevronDown } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 import Logo from "./logo"
+import { Menu, X } from "lucide-react"
 
 export default function NavBar() {
   const pathname = usePathname()
   const [isFlotteOpen, setIsFlotteOpen] = useState(false)
-  // Ajouter un état pour suivre le défilement
   const [isScrolled, setIsScrolled] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   // Fermer le menu déroulant lorsqu'on clique ailleurs
   useEffect(() => {
@@ -27,30 +28,10 @@ export default function NavBar() {
     }
   }, [])
 
-  // Ajouter un effet pour détecter le défilement
-  useEffect(() => {
-    const handleScroll = () => {
-      // Changer l'état lorsque la page est défilée (au-delà de 50px)
-      setIsScrolled(window.scrollY > 50)
-    }
-
-    // Ajouter l'écouteur d'événement
-    window.addEventListener("scroll", handleScroll)
-
-    // Vérifier l'état initial
-    handleScroll()
-
-    // Nettoyer l'écouteur d'événement
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
-
   // Vérifier si la page actuelle est liée à la flotte
   const isFlottePage =
     pathname === "/flotte" || pathname === "/flotte/avec-chauffeur" || pathname === "/flotte/sans-chauffeur"
 
-  // Modifier les classes des liens pour utiliser la couleur blanche lorsque la page est défilée
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
       <div
@@ -58,14 +39,14 @@ export default function NavBar() {
       >
         <div className="flex h-[70px] min-w-[240px] items-center justify-center px-4">
           <Link href="/" className="flex items-center">
-            <Logo className="h-20 w-auto" />
+            <Logo className="h-16 w-auto" />
           </Link>
         </div>
-        <div className="mx-auto flex gap-4 sm:gap-8 md:gap-12 px-2 sm:px-4">
+        <div className="mx-auto flex gap-4 sm:gap-8 md:gap-12 px-2 sm:px-4 md:flex hidden">
           <Link
             href="/"
             className={`${
-              pathname === "/" ? "text-[#8e7d3f]" : isScrolled ? "text-white" : "text-black"
+              pathname === "/" ? "text-[#8e7d3f]" : "text-black"
             } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
           >
             ACCUEIL
@@ -73,7 +54,7 @@ export default function NavBar() {
           <Link
             href="/services"
             className={`${
-              pathname === "/services" ? "text-[#8e7d3f]" : isScrolled ? "text-white" : "text-black"
+              pathname === "/services" ? "text-[#8e7d3f]" : "text-black"
             } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
           >
             SERVICES
@@ -81,7 +62,7 @@ export default function NavBar() {
           <Link
             href="/transport"
             className={`${
-              pathname === "/transport" ? "text-[#8e7d3f]" : isScrolled ? "text-white" : "text-black"
+              pathname === "/transport" ? "text-[#8e7d3f]" : "text-black"
             } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
           >
             TRANSPORT
@@ -92,7 +73,7 @@ export default function NavBar() {
             <button
               onClick={() => setIsFlotteOpen(!isFlotteOpen)}
               className={`${
-                isFlottePage ? "text-[#8e7d3f]" : isScrolled ? "text-white" : "text-black"
+                isFlottePage ? "text-[#8e7d3f]" : "text-black"
               } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap flex items-center font-bold text-shadow-md`}
             >
               FLOTTE
@@ -135,15 +116,105 @@ export default function NavBar() {
           <Link
             href="/contact"
             className={`${
-              pathname === "/contact" ? "text-[#8e7d3f]" : isScrolled ? "text-white" : "text-black"
+              pathname === "/contact" ? "text-[#8e7d3f]" : "text-black"
             } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
           >
             CONTACT
           </Link>
         </div>
         {/* This empty div helps center the navigation links */}
-        <div className="min-w-[90px] px-4" />
+        <div className="min-w-[90px] px-4 flex items-center justify-end md:hidden">
+          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 rounded-md hover:bg-gray-100/10">
+            {mobileMenuOpen ? <X className="h-6 w-6 text-black" /> : <Menu className="h-6 w-6 text-black" />}
+          </button>
+        </div>
       </div>
+      {/* Menu mobile */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-sm pt-[70px]">
+          <div className="container mx-auto px-4 py-6 flex flex-col space-y-6 items-center">
+            <Link
+              href="/"
+              className={`${
+                pathname === "/" ? "text-[#8e7d3f]" : "text-white"
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              ACCUEIL
+            </Link>
+            <Link
+              href="/services"
+              className={`${
+                pathname === "/services" ? "text-[#8e7d3f]" : "text-white"
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              SERVICES
+            </Link>
+            <Link
+              href="/transport"
+              className={`${
+                pathname === "/transport" ? "text-[#8e7d3f]" : "text-white"
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              TRANSPORT
+            </Link>
+
+            {/* Sous-menu Flotte pour mobile */}
+            <div className="w-full flex flex-col items-center">
+              <Link
+                href="/flotte"
+                className={`${
+                  pathname === "/flotte" ? "text-[#8e7d3f]" : "text-white"
+                } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold mb-4`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                FLOTTE
+              </Link>
+              <div className="flex flex-col space-y-3 items-center bg-black/50 w-full py-3 rounded-md">
+                <Link
+                  href="/flotte"
+                  className={`${
+                    pathname === "/flotte" ? "text-[#8e7d3f]" : "text-white"
+                  } hover:text-[#8e7d3f] transition-colors text-base`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Tous les véhicules
+                </Link>
+                <Link
+                  href="/flotte/avec-chauffeur"
+                  className={`${
+                    pathname === "/flotte/avec-chauffeur" ? "text-[#8e7d3f]" : "text-white"
+                  } hover:text-[#8e7d3f] transition-colors text-base`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Avec chauffeur
+                </Link>
+                <Link
+                  href="/flotte/sans-chauffeur"
+                  className={`${
+                    pathname === "/flotte/sans-chauffeur" ? "text-[#8e7d3f]" : "text-white"
+                  } hover:text-[#8e7d3f] transition-colors text-base`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sans chauffeur
+                </Link>
+              </div>
+            </div>
+
+            <Link
+              href="/contact"
+              className={`${
+                pathname === "/contact" ? "text-[#8e7d3f]" : "text-white"
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              CONTACT
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }

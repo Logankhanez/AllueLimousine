@@ -1,5 +1,3 @@
-import Logo from "@/components/logo"
-
 export default function TransportPage() {
   return (
     <main>
@@ -72,7 +70,8 @@ export default function TransportPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
             {/* Logo et drapeau */}
             <div className="text-center md:text-left">
-              <Logo className="h-32 w-auto mb-8" />
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-2">Allure</h2>
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-8">Limousine</h2>
               <div className="flex justify-center md:justify-start">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Civil_Ensign_of_Switzerland.svg%20(1)-bPbKC8IbHZNpXYzoIV0F4QaOM6fX9P.png"
@@ -85,21 +84,21 @@ export default function TransportPage() {
             {/* Informations de contact */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">LOCATION & HEURES</h3>
-                <p className="text-sm mb-2 font-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
-                <p className="text-sm font-light">Tous les jours également le Week-End 24h/24h</p>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">LOCATION & HEURES</h3>
+                <p className="text-sm mb-2 font-avenir-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
+                <p className="text-sm font-avenir-light">Tous les jours également le Week-End 24h/24h</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">CONTACTER NOUS</h3>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">CONTACTER NOUS</h3>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <span>✉</span>
-                    <span className="text-sm font-light">Email</span>
+                    <span className="text-sm font-avenir-light">Email</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>📞</span>
-                    <span className="text-sm font-light">+41 XXXXXXXXX</span>
+                    <span className="text-sm font-avenir-light">+41 XXXXXXXXX</span>
                   </div>
                 </div>
               </div>
@@ -108,7 +107,7 @@ export default function TransportPage() {
 
           {/* Copyright */}
           <div className="text-center text-sm">
-            <p className="font-light">© 2035</p>
+            <p className="font-avenir-light">© 2035</p>
           </div>
         </div>
       </footer>

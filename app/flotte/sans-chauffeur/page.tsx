@@ -6,7 +6,6 @@ import { vehicles } from "@/lib/types"
 import VehicleCard from "@/components/vehicle-card"
 import { Loader2 } from "lucide-react"
 import { calculateDistance } from "@/lib/distance"
-import Logo from "@/components/logo"
 
 export default function FlotteSansChauffeurPage() {
   const searchParams = useSearchParams()
@@ -85,7 +84,7 @@ export default function FlotteSansChauffeurPage() {
         <div className="container mx-auto px-4">
           <div className="relative z-10 max-w-4xl mx-auto">
             {/* Cadre stylisé pour le résumé du trajet */}
-            <div className="bg-black/60 backdrop-blur-sm rounded-lg border border-[#8e7d3f]/20 p-8 text-center">
+            <div className="bg-black/60 backdrop-blur-sm rounded-lg border border-[#8e7d3f]/20 p-4 sm:p-8 text-center">
               {/* Badge de type de service */}
               <div className="flex justify-center mb-4">
                 <span className="bg-[#8e7d3f] text-white px-4 py-1 rounded-full text-sm uppercase tracking-wider">
@@ -93,26 +92,9 @@ export default function FlotteSansChauffeurPage() {
                 </span>
               </div>
 
-              <h1 className="font-['Georgia'] text-3xl md:text-4xl text-white mb-6">Détails de votre trajet</h1>
-              <div className="flex items-center justify-center gap-4 mb-8">
-                <div className="w-24 h-[2px] bg-gradient-to-r from-transparent to-[#8e7d3f]"></div>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-[3px] bg-[#8e7d3f] mb-2"></div>
-                  <div className="w-20 h-[4px] bg-[#8e7d3f] mb-2"></div>
-                  <div className="w-12 h-[3px] bg-[#8e7d3f]"></div>
-                </div>
-                <div className="relative mx-2">
-                  <div className="w-8 h-8 border-3 border-[#8e7d3f] rotate-45"></div>
-                  <div className="absolute inset-0 w-8 h-8 border-3 border-[#8e7d3f] rotate-45 scale-75 opacity-70"></div>
-                  <div className="absolute inset-0 w-8 h-8 border-2 border-[#8e7d3f]/50 rotate-45 scale-90 opacity-50"></div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-[3px] bg-[#8e7d3f] mb-2"></div>
-                  <div className="w-20 h-[4px] bg-[#8e7d3f] mb-2"></div>
-                  <div className="w-12 h-[3px] bg-[#8e7d3f]"></div>
-                </div>
-                <div className="w-24 h-[2px] bg-gradient-to-l from-transparent to-[#8e7d3f]"></div>
-              </div>
+              <h1 className="font-['Georgia'] text-2xl sm:text-3xl md:text-4xl text-white mb-6">
+                Détails de votre trajet
+              </h1>
 
               {/* Détails du trajet avec icônes */}
               <div className="flex flex-col items-center gap-4 mb-6">
@@ -120,7 +102,7 @@ export default function FlotteSansChauffeurPage() {
                   <div className="w-10 h-10 rounded-full bg-[#8e7d3f]/20 flex items-center justify-center">
                     <span className="text-[#8e7d3f]">A</span>
                   </div>
-                  <span className="text-lg font-medium">{pickupLocation}</span>
+                  <span className="text-base sm:text-lg font-medium">{pickupLocation}</span>
                 </div>
 
                 <div className="h-8 border-l border-[#8e7d3f]/50"></div>
@@ -129,28 +111,24 @@ export default function FlotteSansChauffeurPage() {
                   <div className="w-10 h-10 rounded-full bg-[#8e7d3f]/20 flex items-center justify-center">
                     <span className="text-[#8e7d3f]">B</span>
                   </div>
-                  <span className="text-lg font-medium">{dropoffLocation}</span>
+                  <span className="text-base sm:text-lg font-medium">{dropoffLocation}</span>
                 </div>
               </div>
 
               {/* Informations supplémentaires */}
               <div className="flex flex-wrap items-center justify-center gap-4 text-white/80">
-                <div className="bg-black/40 px-4 py-2 rounded-md">
-                  <span className="text-lg">
+                <div className="bg-black/40 px-4 py-2 rounded-md w-full sm:w-auto">
+                  <span className="text-base sm:text-lg">
                     Distance:{" "}
                     <strong className="text-[#8e7d3f]">
-                      {distance !== null
-                        ? roundTrip
-                          ? `${distance * 2} km (aller-retour)`
-                          : `${distance} km`
-                        : "0 km"}
+                      {roundTrip ? `${distance * 2} km (aller-retour)` : `${distance} km`}
                     </strong>
                   </span>
                 </div>
 
                 {roundTrip && (
-                  <div className="bg-black/40 px-4 py-2 rounded-md">
-                    <span className="text-lg">
+                  <div className="bg-black/40 px-4 py-2 rounded-md w-full sm:w-auto">
+                    <span className="text-base sm:text-lg">
                       Type: <strong className="text-[#8e7d3f]">Aller-retour</strong>
                     </span>
                   </div>
@@ -198,7 +176,8 @@ export default function FlotteSansChauffeurPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
             {/* Logo et drapeau */}
             <div className="text-center md:text-left">
-              <Logo className="h-32 w-auto mb-8" />
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-2">Allure</h2>
+              <h2 className="font-['Times_New_Roman'] text-4xl md:text-5xl mb-8">Limousine</h2>
               <div className="flex justify-center md:justify-start">
                 <img
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Civil_Ensign_of_Switzerland.svg%20(1)-bPbKC8IbHZNpXYzoIV0F4QaOM6fX9P.png"
@@ -211,21 +190,21 @@ export default function FlotteSansChauffeurPage() {
             {/* Informations de contact */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">LOCATION & HEURES</h3>
-                <p className="text-sm mb-2 font-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
-                <p className="text-sm font-light">Tous les jours également le Week-End 24h/24h</p>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">LOCATION & HEURES</h3>
+                <p className="text-sm mb-2 font-avenir-light">Chem. des Chalets 5, 1279 Chavannes-de-Bogis</p>
+                <p className="text-sm font-avenir-light">Tous les jours également le Week-End 24h/24h</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold mb-4 font-light">CONTACTER NOUS</h3>
+                <h3 className="text-sm font-semibold mb-4 font-avenir-light">CONTACTER NOUS</h3>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <span>✉</span>
-                    <span className="text-sm font-light">Email</span>
+                    <span className="text-sm font-avenir-light">Email</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>📞</span>
-                    <span className="text-sm font-light">+41 XXXXXXXXX</span>
+                    <span className="text-sm font-avenir-light">+41 XXXXXXXXX</span>
                   </div>
                 </div>
               </div>
@@ -234,7 +213,7 @@ export default function FlotteSansChauffeurPage() {
 
           {/* Copyright */}
           <div className="text-center text-sm">
-            <p className="font-light">© 2035</p>
+            <p className="font-avenir-light">© 2035</p>
           </div>
         </div>
       </footer>

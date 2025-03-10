@@ -520,7 +520,9 @@ export default function CitySearch() {
 
             {/* Lieu de retour */}
             <div className="space-y-2">
-              <label className="block text-sm font-medium text-gray-200">Lieu de Destination</label>
+              <label className="block text-sm font-medium text-gray-200">
+                {serviceType === "without-driver" ? "Lieu de retour" : "Lieu de Destination"}
+              </label>
               <div ref={dropoffContainerRef} className="relative">
                 {selectedDropoff ? (
                   <div className="flex items-center justify-between p-4 border border-[#8e7d3f]/50 rounded-lg bg-gray-800/90 backdrop-blur-sm shadow-md">
@@ -670,13 +672,13 @@ export default function CitySearch() {
         {/* Destinations populaires */}
         <div className="bg-[#8e7d3f]/20 p-6 border-t border-[#8e7d3f]/30 rounded-b-xl">
           <h3 className="text-sm font-medium mb-3">Destinations populaires</h3>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 justify-center">
             {popularDestinations.map((destination, index) => (
               <Button
                 key={index}
                 variant="outline"
                 size="sm"
-                className="bg-gray-700 text-white border-gray-600 hover:bg-gray-600"
+                className="bg-gray-700 text-white border-gray-600 hover:bg-gray-600 text-xs sm:text-sm"
                 onClick={() => {
                   if (selectedPickup) {
                     // Si un lieu de prise en charge est déjà sélectionné, définir comme destination
@@ -696,7 +698,7 @@ export default function CitySearch() {
                 ) : (
                   <MapPin className="h-3 w-3 mr-1" />
                 )}
-                {destination.name.split(",")[0]}
+                <span className="truncate max-w-[120px] sm:max-w-none">{destination.name.split(",")[0]}</span>
               </Button>
             ))}
           </div>

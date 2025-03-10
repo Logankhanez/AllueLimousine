@@ -71,11 +71,12 @@ const knownLocations: Record<string, [number, number]> = {
   sallanches: [6.636, 45.934],
   albertville: [6.392, 45.675],
   "bourg-en-bresse": [5.228, 46.205],
-  // "bellegarde-sur-valserine": [5.827, 46.106], // Commented out to avoid duplicate
+  "bellegarde-sur-valserine": [5.827, 46.106],
   gex: [6.058, 46.335],
   "ferney-voltaire": [6.108, 46.258],
   "divonne-les-bains": [6.143, 46.358],
   valserhône: [5.8253, 46.1128],
+  "bellegarde-sur-valserine": [5.8253, 46.1128], // Ancien nom de Valserhône
   bellegarde: [5.8253, 46.1128], // Nom court souvent utilisé
   "châtillon-en-michaille": [5.8253, 46.1128], // Commune déléguée de Valserhône
   lancrans: [5.8253, 46.1128], // Commune déléguée de Valserhône
@@ -93,12 +94,12 @@ const knownLocations: Record<string, [number, number]> = {
   delle: [6.9833, 47.5167],
   "saint-louis": [7.5667, 47.5833],
   "saint-julien-en-genevois": [6.0833, 46.1333],
-  // annemasse: [6.234, 46.193], // Duplicate - already defined above
+  annemasse: [6.234, 46.193],
   bonneville: [6.4, 46.0833],
   "la roche-sur-foron": [6.3167, 46.0667],
-  // cluses: [6.585, 46.059], // Duplicate - already defined above
-  // "saint-gervais-les-bains": [6.712, 45.892], // Duplicate - already defined above
-  // sallanches: [6.636, 45.934], // Duplicate - already defined above
+  cluses: [6.585, 46.059],
+  "saint-gervais-les-bains": [6.712, 45.892],
+  sallanches: [6.636, 45.934],
 
   // Gares principales
   "gare de genève-cornavin": [6.1419, 46.2101],
