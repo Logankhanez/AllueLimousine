@@ -18,6 +18,8 @@ export default function Page() {
           loop
           muted
           playsInline
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
           className="h-full w-full object-cover"
           poster="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Vid%C3%A9o%20sans%20titre%20%E2%80%90%20R%C3%A9alis%C3%A9e%20avec%20Clipchamp%20(4)-qYAoTHIGldcA8PwF0Wo2Pp8pbDXJrB.mp4"
         >
@@ -94,7 +96,15 @@ export default function Page() {
       {/* Deuxième section vidéo avec superposition */}
       <section className="relative h-[50vh]">
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-[#8e7d3f]" />
-        <video autoPlay loop muted playsInline className="h-full w-full object-cover">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
+          className="h-full w-full object-cover"
+        >
           <source
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Vid%C3%A9o%20sans%20titre%20%E2%80%90%20R%C3%A9alis%C3%A9e%20avec%20Clipchamp%20(5)-flY8eidNpKNxuJflAnnTn2UKCEPNTv.mp4"
             type="video/mp4"
