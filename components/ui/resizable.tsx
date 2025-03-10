@@ -1,45 +1,56 @@
 "use client"
 
-import { GripVertical } from "lucide-react"
-import * as ResizablePrimitive from "react-resizable-panels"
-
+import type { ReactNode } from "react"
+import { motion, type HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 
-const ResizablePanelGroup = ({
-  className,
+// Définir les props spécifiques à notre composant
+interface AnimatedButtonProps {
+  children: ReactNode
+  variant?: "default" | "outline" | "gold"
+  className?: string
+  type?: "button" | "submit" | "reset"
+  disabled?: boolean
+  onClick?: () => void
+}
+
+export default function AnimatedButton({
+  children,
+  variant = "default",
+  className = "",
+  type = "button",
+  disabled = false,
+  onClick,
   ...props
-}: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
-  <ResizablePrimitive.PanelGroup
-    className={cn(
-      "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
-      className
-    )}
-    {...props}
-  />
-)
+}: AnimatedButtonProps) {
+  const baseClasses = "inline-flex items-center justify-center rounded-md px-6 py-3 font-medium transition-colors"
 
-const ResizablePanel = ResizablePrimitive.Panel
+  const variantClasses = {
+    default: "bg-primary text-primary-foreground hover:bg-primary/90",
+    outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+    gold: "bg-[#8e7d3f] text-white hover:bg-[#8e7d3f]/90 border border-[#8e7d3f]/30",
+  }
 
-const ResizableHandle = ({
-  withHandle,
-  className,
-  ...props
-}: React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
-  withHandle?: boolean
-}) => (
-  <ResizablePrimitive.PanelResizeHandle
-    className={cn(
-      "relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90",
-      className
-    )}
-    {...props}
-  >
-    {withHandle && (
-      <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <GripVertical className="h-2.5 w-2.5" />
-      </div>
-    )}
-  </ResizablePrimitive.PanelResizeHandle>
-)
+  // Définir les animations Framer Motion séparément
+  const motionProps: HTMLMotionProps<"button"> = {
+    whileHover: { scale: 1.02 },
+    whileTap: { scale: 0.98 },
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.3 },
+  }
 
-export { ResizablePanelGroup, ResizablePanel, ResizableHandle }
+  return (
+    <motion.button
+      className={cn(baseClasses, variantClasses[variant], className)}
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      {...motionProps}
+    >
+      {children}
+    </motion.button>
+  )
+}
+
+
