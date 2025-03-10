@@ -5,6 +5,7 @@ import "./globals.css"
 import NavBar from "@/components/nav-bar"
 import ScrollToTop from "@/components/scroll-to-top"
 import PageTransition from "@/components/motion/page-transition"
+import WhatsAppChat from "@/components/whatsapp-chat"
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -20,7 +21,6 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "A.L Transport",
   description: "Transport services de luxe à Genève",
-    generator: 'v0.dev'
 }
 
 export const viewport = {
@@ -45,11 +45,10 @@ export default function RootLayout({
         <div className="pt-[70px]">
           <PageTransition>{children}</PageTransition>
         </div>
+        {/* WhatsApp Chat Widget - Remplacez le numéro par votre numéro réel */}
+        <WhatsAppChat phoneNumber="41791234567" />
       </body>
     </html>
   )
 }
 
-
-
-import './globals.css'
