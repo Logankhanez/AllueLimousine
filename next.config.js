@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    output: "export",
-    images: {
-      unoptimized: true,
-    },
-  }
-  
-  module.exports = nextConfig
-  
-  
+  // La ligne "output: export" a été supprimée
+  i18n: {
+    locales: ['fr'],
+    defaultLocale: 'fr',
+  },
+  images: {
+    domains: ['images.unsplash.com', 'plus.unsplash.com'],
+  },
+};
+
+module.exports = nextConfig;
