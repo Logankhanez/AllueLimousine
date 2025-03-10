@@ -47,7 +47,7 @@ export default function NavBar() {
             href="/"
             className={`${
               pathname === "/" ? "text-[#8e7d3f]" : "text-black"
-            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
+            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-['Georgia'] font-medium`}
           >
             ACCUEIL
           </Link>
@@ -55,7 +55,7 @@ export default function NavBar() {
             href="/services"
             className={`${
               pathname === "/services" ? "text-[#8e7d3f]" : "text-black"
-            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
+            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-['Georgia'] font-medium`}
           >
             SERVICES
           </Link>
@@ -63,7 +63,7 @@ export default function NavBar() {
             href="/transport"
             className={`${
               pathname === "/transport" ? "text-[#8e7d3f]" : "text-black"
-            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
+            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-['Georgia'] font-medium`}
           >
             TRANSPORT
           </Link>
@@ -74,7 +74,7 @@ export default function NavBar() {
               onClick={() => setIsFlotteOpen(!isFlotteOpen)}
               className={`${
                 isFlottePage ? "text-[#8e7d3f]" : "text-black"
-              } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap flex items-center font-bold text-shadow-md`}
+              } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap flex items-center font-['Georgia'] font-medium`}
             >
               FLOTTE
               <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${isFlotteOpen ? "rotate-180" : ""}`} />
@@ -117,7 +117,7 @@ export default function NavBar() {
             href="/contact"
             className={`${
               pathname === "/contact" ? "text-[#8e7d3f]" : "text-black"
-            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-bold text-shadow-md`}
+            } hover:text-[#8e7d3f] transition-colors text-sm sm:text-base tracking-wider whitespace-nowrap font-['Georgia'] font-medium`}
           >
             CONTACT
           </Link>
@@ -137,7 +137,7 @@ export default function NavBar() {
               href="/"
               className={`${
                 pathname === "/" ? "text-[#8e7d3f]" : "text-white"
-              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-['Georgia'] font-medium`}
               onClick={() => setMobileMenuOpen(false)}
             >
               ACCUEIL
@@ -146,7 +146,7 @@ export default function NavBar() {
               href="/services"
               className={`${
                 pathname === "/services" ? "text-[#8e7d3f]" : "text-white"
-              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-['Georgia'] font-medium`}
               onClick={() => setMobileMenuOpen(false)}
             >
               SERVICES
@@ -155,7 +155,7 @@ export default function NavBar() {
               href="/transport"
               className={`${
                 pathname === "/transport" ? "text-[#8e7d3f]" : "text-white"
-              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-['Georgia'] font-medium`}
               onClick={() => setMobileMenuOpen(false)}
             >
               TRANSPORT
@@ -167,7 +167,7 @@ export default function NavBar() {
                 href="/flotte"
                 className={`${
                   pathname === "/flotte" ? "text-[#8e7d3f]" : "text-white"
-                } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold mb-4`}
+                } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-['Georgia'] font-medium mb-4`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FLOTTE
@@ -207,7 +207,7 @@ export default function NavBar() {
               href="/contact"
               className={`${
                 pathname === "/contact" ? "text-[#8e7d3f]" : "text-white"
-              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-bold`}
+              } hover:text-[#8e7d3f] transition-colors text-xl tracking-wider font-['Georgia'] font-medium`}
               onClick={() => setMobileMenuOpen(false)}
             >
               CONTACT

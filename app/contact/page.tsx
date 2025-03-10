@@ -1,3 +1,5 @@
+import ContactForm from "@/components/contact-form"
+
 export default function ContactPage() {
   return (
     <main>
@@ -11,8 +13,8 @@ export default function ContactPage() {
                 N&apos;hésitez pas à nous contacter pour toute question ou demande de réservation.
               </p>
               <p className="text-[#666666] text-sm md:text-base">
-                Votre satisfaction est notre et nous sommes là pour vous aider. Remplissez le formulaire ci-dessous, et
-                nous vous répondrons dans les plus brefs délais !
+                Votre satisfaction est notre priorité et nous sommes là pour vous aider. Remplissez le formulaire
+                ci-dessous, et nous vous répondrons dans les plus brefs délais !
               </p>
             </div>
           </div>
@@ -44,54 +46,7 @@ export default function ContactPage() {
             </div>
 
             {/* Formulaire */}
-            <form className="space-y-6">
-              {/* Prénom et Nom */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Prénom"
-                    className="w-full border-b border-[#666666] bg-transparent p-2 focus:outline-none focus:border-[#8e7d3f]"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Nom"
-                    className="w-full border-b border-[#666666] bg-transparent p-2 focus:outline-none focus:border-[#8e7d3f]"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div>
-                <input
-                  type="email"
-                  placeholder="E-mail *"
-                  required
-                  className="w-full border-b border-[#666666] bg-transparent p-2 focus:outline-none focus:border-[#8e7d3f]"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <textarea
-                  placeholder="Message"
-                  rows={4}
-                  className="w-full border-b border-[#666666] bg-transparent p-2 focus:outline-none focus:border-[#8e7d3f] resize-none"
-                />
-              </div>
-
-              {/* Bouton Envoyer */}
-              <div>
-                <button
-                  type="submit"
-                  className="w-full sm:w-auto bg-[#8e7d3f] text-white px-8 py-2 hover:bg-[#8e7d3f]/90 transition-colors"
-                >
-                  Envoyer
-                </button>
-              </div>
-            </form>
+            <ContactForm />
 
             {/* Réseaux sociaux */}
             <div className="flex gap-4 mt-8">

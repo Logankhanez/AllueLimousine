@@ -38,7 +38,7 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
     email: "",
     phone: "",
     message: "",
-    paymentOption: "best-price",
+    paymentOption: "best-price", // Seule option disponible
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [reservationRef, setReservationRef] = useState("")
@@ -68,10 +68,7 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
       totalPrice *= 2
     }
 
-    // Ajouter un supplément pour l'option "flexible" si sélectionnée
-    if (formData.paymentOption === "flexible") {
-      return totalPrice * 1.1 // +10% pour l'option flexible
-    }
+    // Pas de supplément car il n'y a qu'une seule option
 
     return totalPrice
   }
@@ -82,11 +79,6 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  // Gérer le changement d'option de paiement
-  const handlePaymentOptionChange = (option: string) => {
-    setFormData((prev) => ({ ...prev, paymentOption: option }))
   }
 
   // Soumettre le formulaire
@@ -193,8 +185,8 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
                         name="payment"
                         id="best-price"
                         className="h-4 w-4 border-gray-300 text-[#8e7d3f] focus:ring-[#8e7d3f]"
-                        checked={formData.paymentOption === "best-price"}
-                        onChange={() => handlePaymentOptionChange("best-price")}
+                        checked={true}
+                        readOnly
                       />
                       <label htmlFor="best-price" className="font-medium">
                         Meilleur prix
@@ -205,33 +197,6 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
                     </p>
                   </div>
                   <span className="text-sm font-medium mt-2 sm:mt-0">Inclus</span>
-                </div>
-
-                {/* Option: Restez flexible */}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between rounded-lg border border-[#8e7d3f]/20 p-4 bg-black/40">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="radio"
-                        name="payment"
-                        id="flexible"
-                        className="h-4 w-4 border-gray-300 text-[#8e7d3f] focus:ring-[#8e7d3f]"
-                        checked={formData.paymentOption === "flexible"}
-                        onChange={() => handlePaymentOptionChange("flexible")}
-                      />
-                      <label htmlFor="flexible" className="font-medium">
-                        Restez flexible
-                      </label>
-                      <span className="rounded-full bg-[#8e7d3f] px-2 py-1 text-xs text-white border border-[#8e7d3f]/50">
-                        Populaire
-                      </span>
-                    </div>
-                    <p className="mt-1 text-sm text-gray-400 ml-6">
-                      Payez à la prise en charge, annulez et modifiez gratuitement avant l&apos;heure de la prise en
-                      charge
-                    </p>
-                  </div>
-                  <span className="text-sm font-medium mt-2 sm:mt-0">+ 10%</span>
                 </div>
               </div>
             </div>
@@ -483,7 +448,7 @@ export default function VehicleModal({ vehicle, isOpen, onClose, reservationInfo
                   type="button"
                   variant="outline"
                   onClick={() => setStep("details")}
-                  className="border-gray-600 text-white hover:bg-gray-700 w-full sm:w-auto"
+                  className="border-[#8e7d3f] text-[#8e7d3f] hover:bg-[#8e7d3f] hover:text-white w-full sm:w-auto transition-colors"
                 >
                   Retour
                 </Button>
