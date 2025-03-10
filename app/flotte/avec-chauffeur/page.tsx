@@ -127,7 +127,7 @@ export default function FlotteAvecChauffeurPage() {
                   <span className="text-base sm:text-lg">
                     Distance:{" "}
                     <strong className="text-[#8e7d3f]">
-                      {roundTrip ? `${distance * 2} km (aller-retour)` : `${distance} km`}
+                    {roundTrip ? `${(distance ?? 0) * 2} km (aller-retour)` : `${distance ?? 0} km`}
                     </strong>
                   </span>
                 </div>
